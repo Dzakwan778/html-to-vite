@@ -1,0 +1,140 @@
+/* Reset & Base Styling - Diperbaiki agar halaman bisa di-scroll secara alami */
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background: #111;
+  font-family: "Franklin Gothic Heavy", "Arial Black", sans-serif;
+  overflow-x: hidden;
+}
+
+/* =========================================================
+       LAPISAN 1: Background Utama (Fixed di Layar)
+       ========================================================= */
+.bg-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: url("./src/images/full.jpg") top center no-repeat;
+  background-size: cover;
+  filter: blur(2px);
+  z-index: 1;
+  pointer-events: none; /* Ditambahkan agar tidak menghalangi scroll mouse */
+}
+
+/* =========================================================
+       LAPISAN 2: Teks Utama Solid Putih (Fixed di Layar)
+       ========================================================= */
+.text-solid {
+  position: fixed;
+  top: 35%; /* Mengikuti posisi teks di video */
+  left: 50%;
+  color: white;
+  text-shadow:
+    2px 2px 5px rgba(0, 0, 0, 0.3),
+    5px 5px 70px rgba(255, 255, 255, 0.5);
+  font-size: 15vw;
+  white-space: nowrap;
+  transform: translate(-50%, -50%) scale(1, 1.1);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* =========================================================
+       LAPISAN 3: Container Section 1 & Gunung Cutout (Scrollable)
+       ========================================================= */
+.section1 {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Gambar Gunung Cutout yang sejajar sempurna dengan background saat scroll = 0 */
+.mountain-cutout {
+  width: 100%;
+  height: 100%;
+  background: url("./src/images/tahap1.png") top center no-repeat;
+  background-size: cover;
+}
+
+/* =========================================================
+       LAPISAN 4: Teks Stroke Transparan (Fixed di Depan Gunung)
+       ========================================================= */
+.text-stroke {
+  position: fixed;
+  top: 35%; /* WAJIB sama persis dengan .text-solid */
+  left: 50%; /* WAJIB sama persis dengan .text-solid */
+  color: rgba(255, 255, 255, 0);
+  -webkit-text-stroke: 3px white;
+  font-size: 15vw;
+  white-space: nowrap;
+  transform: translate(-50%, -50%) scale(1, 1.1); /* WAJIB sama persis dengan .text-solid */
+  z-index: 4;
+  pointer-events: none;
+}
+
+.image-blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("./src/images/tahap2.png") top center no-repeat;
+  background-size: cover;
+  /* filter: blur(5px); */
+  z-index: 5; /* Z-Index lebih tinggi dari teks stroke */
+  pointer-events: none; /* Agar tidak menghalangi interaksi pengguna */
+}
+
+/* archive */
+/* .test {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.mountain-cutout-blur {
+  width: 100%;
+  height: 100%;
+  background: url("./src/images/tahap2.png") top center no-repeat;
+  background-size: cover;
+} */
+
+/* =========================================================
+       LAPISAN 5: Section 2 Konten (Menutupi Seluruh Layar)
+       ========================================================= */
+.section2 {
+  width: 100%;
+  min-height: 100vh;
+  background: #ff4a3b; /* Warna merah menyala seperti di video referensi */
+  position: relative;
+  z-index: 10; /* Z-Index tinggi untuk menutup teks dan background fixed di atas */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 -15px 30px rgba(0, 0, 0, 0.5); /* Efek bayangan halus saat naik */
+}
+
+/* Styling Teks Section 2 */
+.text-section2 {
+  font-size: 10vw;
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.1;
+  letter-spacing: 2px;
+}
